@@ -1,70 +1,30 @@
-#!/bin/bash
 
-while :
- do
-  clear
-  echo "----------------------------------------------"
-  echo " * * * * * * * Main Menu * * * * * * * * * * "
-  echo "----------------------------------------------"
-  echo "[1] Change password"
-  echo "[2] See disk space"
-  echo "[3] Login to other box using ssh"
-  echo "[4] Show all services running"
-  echo "[5] Show all prots opened"
-  echo "[6] Show all java apps running"
-  echo "[7] Facility to kill app"
-  echo "[8] Exit/stop"
-  echo "----------------------------------------------"
-  echo -n "Enter your menu choice [1-5]:"
- read var
+Shell script for run commands from menu. In this shell script user can run commands from options give in menu list. All 
+options are linked with commands in shell script. Below are the option mentioned in shell script
 
-case $var in
+Change password
+See disk space
+Login to other box using ssh
+Show all services running
+Show all prots opened
+Show all java apps running
+Facility to kill app
+Exit/stop
 
-1) passwd
+To run shell shell you can use:
 
-echo "Press any key to return menu...."
-read -n 1;;
+sh menu.sh
+sh menulist.sh
 
-2) df -h
-echo "Press any key to return menu...."
-read -n 1;;
+OR
 
-3) echo " Please enter machine's ip address"
-   read mach
-   ssh $mach
-   echo "Press any key to return menu...."
-   read -n 1;;
+./menu.sh
+./menulist.sh
 
-4)service --status-all
 
-  echo "Press any key to return menu...."
-  read -n 1;;
 
-5)echo " Open ports on the server: "
-   netstat -a | egrep 'Proto|LISTEN'
 
-  echo "Press any key to return menu...."
-  read -n 1;;
 
-6) echo " Please enter running app name "
-  read app
-  ps -aufx|grep $app
 
- echo "Press any key to return menu...."
- read -n 1;;
 
-7)echo "Please enter app name to kill"
-  read proc
-  pkill $proc
 
- echo "Press any key to return menu...."
- read -n 1;;
-
-8)exit 0
-;;
-*) echo "Opps!!! Please select choice 1,2,3,4,5,6,7 or 8"
-       echo "Press a key. . ."
-       read -n 1
-       ;;
-esac
-done
